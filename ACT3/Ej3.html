@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table,th{
+        margin:5px;
+        border:1px solid black;
+        font-size:1.3em;
+    }
+    input{
+        font-size:1.3em;
+    }
+    .selector{
+        font-size:1.3em;
+    }
+</style>
+<body>
+    <h1>Configura tu propia web!</h1>
+    <!--Color de fondo, tipo de letra, tamaño de letra, Alineacion de texto, Imagen de banner (3 posibles), -->
+    <table>
+        <form action="Ej3.php" method="get">
+            <tr>
+                <th>Color de fondo</th>
+                <th><selector name="color" class="selector">
+                    <option value="rojo">rojo</option>
+                    <option value="azul">azul</option>
+                </selector></th>
+            </tr>
+            <tr>
+                <th>Tipo de letra</th>
+                <th><select name="letra" class="selector">
+                    <option value="Helvetica">Helvetica</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Arial">Arial</option>
+                </select></th>
+            </tr>
+            <tr>
+                <th>Tamaño de fuente</th>
+                <th><input type="number" min="5" max="15"></th>
+            </tr>
+            <tr>
+                <th>Alineacion de texto</th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Imagen de banner</th>
+                <th><select name="banner" class="selector">
+                    <option value="cilindro">cilindro</option>
+                    <option value="cuadrado">cuadrado</option>
+                    <option value="triangulo">triangulo</option>
+                  </select></th>
+            </tr>
+            <tr><th colspan="2"><input type="submit" value="Crear sitio"></th></tr>
+        </form>
+    </table>
+    
+</body>
+</html>
