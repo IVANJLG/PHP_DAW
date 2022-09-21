@@ -17,6 +17,7 @@
     }
     .selector{
         font-size:1.3em;
+        text-align:center;
     }
 </style>
 <body>
@@ -26,10 +27,12 @@
         <form action="Ej3.php" method="get">
             <tr>
                 <th>Color de fondo</th>
-                <th><selector name="color" class="selector">
+                <th><select name="color" class="selector">
                     <option value="rojo">rojo</option>
                     <option value="azul">azul</option>
-                </selector></th>
+                    <option value="amarillo">amarillo</option>
+                    <option value="verde">verde</option>
+                </select></th>
             </tr>
             <tr>
                 <th>Tipo de letra</th>
@@ -45,7 +48,11 @@
             </tr>
             <tr>
                 <th>Alineacion de texto</th>
-                <th></th>
+                <th><select name="alineacion" class="selector">
+                    <option value="left">izquierda</option>
+                    <option value="right">derecha</option>
+                    <option value="center">centro</option>
+                </select></th>
             </tr>
             <tr>
                 <th>Imagen de banner</th>
