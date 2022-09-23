@@ -9,7 +9,16 @@
 
 <!--AQUI LLAMAS LAS VARIABLES CON EL GET Y LAS ASIGNAS A VARIABLES LOCALES DEL ARCHIVO. EN EL CSS CAMBIAS
 LOS VALORES CORRESPONDIENTES POR LOS STRINGS DONDE LO ALMACENAS-->
-
+<?php
+    $color = $_GET["color"];
+    echo gettype($color);
+    $letra = $_GET["letra"];
+    $tamano = $_GET["tamano"];
+    $alineacion = $_GET["alineacion"];
+    $banner = $_GET["banner"];
+    echo " color de fondo: ",$color," tipo de letra: ",$letra," tamaño de letra: ",$tamano," alineacion: ",$alineacion;
+    $fuente = $tamano*10,"% ",$letra;
+?>
 
 <style>
     *{
@@ -21,13 +30,13 @@ LOS VALORES CORRESPONDIENTES POR LOS STRINGS DONDE LO ALMACENAS-->
         background:blue;
         padding: 20px;
         /*cambia porcentaje y tipo de fuente por las variables correspondientes del formulario*/
-        font: 110% Times New Roman;
+        font:<?php echo $fuente?>;
         /*cambia alineacion por la variable correspondiente*/
         text-align: center;
     }
 
     header{
-        background:green;
+        background:#4D2D73;
         padding:5px;
         width:80%;
         margin:0 auto 5px auto;
@@ -42,7 +51,7 @@ LOS VALORES CORRESPONDIENTES POR LOS STRINGS DONDE LO ALMACENAS-->
     }
 
     #menu{
-        background:red;
+        background:#321456;
         width:80%;
         margin: 0 auto 0 auto;
         padding:5px;
@@ -51,15 +60,12 @@ LOS VALORES CORRESPONDIENTES POR LOS STRINGS DONDE LO ALMACENAS-->
     table{
         text-decoration:none;
         margin: 0 auto 0 auto;
-    }
-
-    #menu > table > tr{
-        padding-left: 20px;
+        padding:5px;
     }
 
     aside{
         clear:both;
-        background:green;
+        background:#9078AD;
         width:80%;
         margin: 5px auto 5px auto;
         padding:5px;
@@ -68,7 +74,7 @@ LOS VALORES CORRESPONDIENTES POR LOS STRINGS DONDE LO ALMACENAS-->
     footer{
         width:78%;
         margin:0 auto 0 auto;
-        background: orange;
+        background: #4D2D73;
         padding:25px;
         margin-top:10px;
     }
@@ -82,12 +88,14 @@ LOS VALORES CORRESPONDIENTES POR LOS STRINGS DONDE LO ALMACENAS-->
             <h1>Mi pagina web</h1>
         </header>
             <div id="menu">
-                <table><tr>
+                <table>
+                    <tr>
                     <th>Opcion 1</th>
                     <th>Opcion 2</th>
                     <th>Opcion 3</th>
                     <th>Opcion 4</th>
-                </tr></table>
+                    </tr>
+                </table>
             </div>
         <div id="contenido">
             <aside>
