@@ -24,14 +24,14 @@
     <h1>Configura tu propia web!</h1>
     <!--Color de fondo, tipo de letra, tamaño de letra, Alineacion de texto, Imagen de banner (3 posibles), -->
     <table>
-        <form action="Ej3.php" method="get">
+        <form action="Ej3.php" method="post">
             <tr>
                 <th>Color de fondo</th>
-                <th><select value="color" class="selector">
-                    <option value="rojo">rojo</option>
-                    <option value="azul">azul</option>
-                    <option value="amarillo">amarillo</option>
-                    <option value="verde">verde</option>
+                <th><select name="color" class="selector">
+                    <option value="red">rojo</option>
+                    <option value="blue">azul</option>
+                    <option value="yellow">amarillo</option>
+                    <option value="green">verde</option>
                 </select></th>
             </tr>
             <tr>
@@ -44,7 +44,7 @@
             </tr>
             <tr>
                 <th>Tamaño de fuente</th>
-                <th><input type="number" min="5" max="15" value="tamano"></th>
+                <th><input type="number" min="70" max="150" name="tamano"> %</th>
             </tr>
             <tr>
                 <th>Alineacion de texto</th>
@@ -52,12 +52,13 @@
                     <option value="left">izquierda</option>
                     <option value="right">derecha</option>
                     <option value="center">centro</option>
+                    <option value="justify">justificado</option>
                 </select></th>
             </tr>
             <tr>
                 <th>Imagen de banner</th>
                 <th><select name="banner" class="selector">
-                    <option value="cilindro">cilindro</option>
+                    <option value="circulo">circulo</option>
                     <option value="cuadrado">cuadrado</option>
                     <option value="triangulo">triangulo</option>
                   </select></th>

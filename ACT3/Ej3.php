@@ -10,14 +10,13 @@
 <!--AQUI LLAMAS LAS VARIABLES CON EL GET Y LAS ASIGNAS A VARIABLES LOCALES DEL ARCHIVO. EN EL CSS CAMBIAS
 LOS VALORES CORRESPONDIENTES POR LOS STRINGS DONDE LO ALMACENAS-->
 <?php
-    $color = $_GET["color"];
-    echo gettype($color);
-    $letra = $_GET["letra"];
-    $tamano = $_GET["tamano"];
-    $alineacion = $_GET["alineacion"];
-    $banner = $_GET["banner"];
-    echo " color de fondo: ",$color," tipo de letra: ",$letra," tamaño de letra: ",$tamano," alineacion: ",$alineacion;
-    $fuente = $tamano*10,"% ",$letra;
+    $color = $_POST['color'];
+    $letra = $_POST['letra'];
+    $tamano = $_POST['tamano'];
+    $alineacion = $_POST['alineacion'];
+    $banner = $_POST['banner'];
+    $logo = "imagen_".$banner.".png";
+    $fuente = $tamano."% ".$letra;
 ?>
 
 <style>
@@ -27,12 +26,12 @@ LOS VALORES CORRESPONDIENTES POR LOS STRINGS DONDE LO ALMACENAS-->
     }
     #contenedor{
         /* cambiar blue por nombre de variable de color de fondo*/
-        background:blue;
+        background:<?php echo $color;?>;
         padding: 20px;
         /*cambia porcentaje y tipo de fuente por las variables correspondientes del formulario*/
         font:<?php echo $fuente?>;
         /*cambia alineacion por la variable correspondiente*/
-        text-align: center;
+        text-align: <?php echo $alineacion?>;
     }
 
     header{
@@ -48,6 +47,7 @@ LOS VALORES CORRESPONDIENTES POR LOS STRINGS DONDE LO ALMACENAS-->
         width:60px;
         background:white;
         margin-bottom:10px;
+        margin-right:40px;
     }
 
     #menu{
@@ -84,7 +84,7 @@ LOS VALORES CORRESPONDIENTES POR LOS STRINGS DONDE LO ALMACENAS-->
     <div id="contenedor">
         <!--Cambia imagen por la correspondiente del formulario-->
         <header>
-            <img src="imagen cuadrado.png">
+            <img src='<?php echo $logo;?>'>
             <h1>Mi pagina web</h1>
         </header>
             <div id="menu">
