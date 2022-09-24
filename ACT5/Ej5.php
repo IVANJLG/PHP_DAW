@@ -15,7 +15,6 @@
         /*volumen del cilindro en metros cubicos. 1dm cubico = 1 litro => 0.001m cubico = 1L. caudal = x L/min
             por tanto si el caudal es x L/min se llenan 0.00x m / min. volumen / 0.00x = minutos. */
         $volumen = pi()*$radio*$radio*$altura;
-        $volumen = 1;
         /*calculo el tiempo en segundos y luego filtrando el resultado por 2 bucles lo transformo en 3 variables. 
         1 de horas, otra de minutos y otra de segundos*/
         $segundos = ($volumen / ($caudal/1000))*60;
@@ -30,6 +29,7 @@
             $horas = $horas+1;
         } 
     ?>
+    <br>
     <table border="1px solid black">
         <tr>
             <th colspan="3">TIEMPO</th>
