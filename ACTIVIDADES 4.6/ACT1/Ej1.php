@@ -14,6 +14,7 @@
                     echo "enhorabuena! Has adivinado el personaje";
                 }else{ echo "respuesta incorrecta";}
     }else{
+        //recoge la variable num y segun lo que vale asigna cual es la imagen visible
         $num = $_REQUEST["num"];
         if($num==1){$imagen1 = "Images/1.jpg";}else{$imagen1 = "Images/oculto.jpg";}
         if($num==2){$imagen2 = "Images/2.jpg";}else{$imagen2 = "Images/oculto.jpg";}
@@ -25,6 +26,7 @@
         if($num==8){$imagen8 = "Images/8.jpg";}else{$imagen8 = "Images/oculto.jpg";}
         if($num==9){$imagen9 = "Images/9.jpg";}else{$imagen9 = "Images/oculto.jpg";}
     ?>
+    <!--Muestra la misma pagina con la tabla de imagenes pero con las imagenes recogidas en las variables de arriba-->
         <table>
             <tr> 
                 <th><img src=<?php echo $imagen1?>></th> 
@@ -50,6 +52,9 @@
             <input type="submit" value="Comprobar">
         </form>
     
-    <?php header('Refresh:1; url=Ej1.html'); }?>
+    <?php 
+    //te envia de nuevo a Ej1.html despues de 1 segundo.
+    header('Refresh:1; url=Ej1.html'); }
+    ?>
     </body>
 </html>
