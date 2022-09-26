@@ -7,10 +7,13 @@
         <meta name='viewport' content='width=device-width, initial-scale=1'>
     </head>
     <body>
-        <form action="Ej1.php" method="get">
-            <h2>altura <input type="number" name="h"></h2><br>
-            <h2>diametro <input type="number" name="d"></h2>
-            <input type="submit" name="enviar">
-        </form>
+        <table border="1px solid black">
+            <form action="Ej1.php" method="get">
+                <tr><th>altura</th><th><input type="number" name="h"></th></tr>
+                <tr><th>diametro</th><th><input type="number" name="d"></th></tr>
+                <tr><th colspan="2"><input type="submit" name="enviar"></th></tr>
+            </form>
+        </table>
+        
     </body>
 </html>
