@@ -11,7 +11,8 @@
     <?php
         $h = $_GET["h"];
         $d = $_GET["d"];
-        $volumen = pi()*($d/2)*($d/2)*$h;
+        $r = $d/2;
+        $volumen = pi()*$r*$r*$h;
         echo "el volumen del cilindro es: ",$volumen;
     ?>
     <img src="cilindro Ej1.jpg">
