@@ -31,7 +31,7 @@
         $numSerieGenerado = rand(1,999);
     ?>
     <table>
-        <tr><th colspan="7">Combinacion generada</th></tr>
+        <tr><th colspan="7">Combinacion introducida</th></tr>
         <tr>
             <th><?php echo $num1;?></th>
             <th><?php echo $num2;?></th>
@@ -41,7 +41,7 @@
             <th><?php echo $num6;?></th>
             <th><?php echo $numSerie;?></th>
         </tr>
-        <tr><th colspan="7">Combinacion introducida</th></tr>
+        <tr><th colspan="7">Combinacion generada</th></tr>
         <tr>
             <th><?php echo $num1Generado;?></th>
             <th><?php echo $num2Generado;?></th>
