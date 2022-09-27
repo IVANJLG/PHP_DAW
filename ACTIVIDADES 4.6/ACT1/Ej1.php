@@ -11,11 +11,13 @@
     <?php
     if(isset($_GET["personaje"])){
         if($_GET["personaje"]=="gollum"){
-                    echo "enhorabuena! Has adivinado el personaje";
-                }else{ echo "respuesta incorrecta";}
+            echo "enhorabuena! Has adivinado el personaje";
+        }else{ 
+            echo "respuesta incorrecta";
+        }
     }else{
         //recoge la variable num y segun lo que vale asigna cual es la imagen visible
-        $num = $_REQUEST["num"];
+        $num = $_GET["num"];
         if($num==1){$imagen1 = "Images/1.jpg";}else{$imagen1 = "Images/oculto.jpg";}
         if($num==2){$imagen2 = "Images/2.jpg";}else{$imagen2 = "Images/oculto.jpg";}
         if($num==3){$imagen3 = "Images/3.jpg";}else{$imagen3 = "Images/oculto.jpg";}
@@ -54,7 +56,8 @@
     
     <?php 
     //te envia de nuevo a Ej1.html despues de 1 segundo.
-    header('Refresh:1; url=Ej1.html'); }
+    header('Refresh:2; url=Ej1.html'); 
+    }
     ?>
     </body>
 </html>
