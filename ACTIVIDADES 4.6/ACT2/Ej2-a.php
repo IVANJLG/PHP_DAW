@@ -15,7 +15,7 @@
             for($i=0;$i<7;$i++){
                 echo "<tr>";
                 for($j=0;$j<7;$j++){
-                    echo"<th><input type='checkbox' name='check' value=".($contador).">".$contador."</th>";
+                    echo"<th><input type='checkbox' value=".($contador).">".$contador."</th>";
                     $contador++;
                 }
                 echo "</tr>";
