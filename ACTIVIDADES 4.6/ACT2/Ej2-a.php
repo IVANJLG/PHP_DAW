@@ -23,6 +23,7 @@
         ?>
             <tr>
                 <th colspan="7">
+                    <input type="number" placeholder="Serie" min="0" max="999">
                     <input type="submit">
                 </th>
             </tr>
