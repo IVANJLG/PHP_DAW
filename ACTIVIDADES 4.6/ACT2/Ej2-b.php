@@ -10,7 +10,7 @@
         <?php
         for($i=1;$i<=49;$i++){
             if(isset($i)){
-                echo $_GET[$i];?><br><?php
+                echo $_REQUEST[$i];?><br><?php
             }else{
                 echo "NO DEFINIDO";?><br><?php
             }
