@@ -50,9 +50,6 @@
             
             //numero de aciertos. has tenido x aciertos
             
-            
-
-            
             echo "<h3>Numero de aciertos: </h3>
                  <h3>Has tenido ".$contador." aciertos.</h3>";
             echo "<h3>"; 
