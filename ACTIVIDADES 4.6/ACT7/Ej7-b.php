@@ -35,7 +35,7 @@
             /*FUNCION QUE COMPRUEBA SI UN NUMERO DE LA TABLA ESTA EN UNA LISTA DE NUMEROS
             (necesario para pintar la tabla luego y contar los aciertos)*/
             function EstaArray($num,$array){
-                for($i=0;$i<count($array)-1;$i++){
+                for($i=1;$i<sizeof($array)-1;$i++){
                     if($num==$array[$i]){
                         return true;
                     }
@@ -59,8 +59,8 @@
                 for($i=1;$i<=49;$i++){
                     if(isset($_REQUEST[$i])){
                         $seleccionado[$contador]=$_REQUEST[$i];
+                        echo "<th>".$seleccionado[$contador]."</th>";
                         $contador++;
-                        echo "<th>".$_REQUEST[$i]."</th>";
                     }
                 }
                 ?>
