@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <style>
-    img{width:40px;}
+    img{width:50px;}
 </style>
 <body>
     <table>
