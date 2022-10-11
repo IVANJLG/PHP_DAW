@@ -15,8 +15,16 @@
 
     img{
         width:50px;
-        margin:-2px;
-        margin-bottom:-4px;
+        margin:-2.8px;
+        margin-bottom:-5.4px;
+    }
+
+    .visto{
+        opacity: 100;
+    }
+
+    .oculto{
+        opacity: 0;
     }
 </style>
 <body>
@@ -45,13 +53,14 @@
                     if($solucion[$contador] == 0){
                         echo "<th>
                                 <a href='Ej3.php?solucion=".serialize($solucion)."&contador=".$contador."'>
-                                    <img src='Images/oculto.jpg'>
+                                    <img class='visto' src='Images/oculto.jpg'>
                                 </a>
                             </th>";
                     }else{
                         echo "<a href='Ej3.php?solucion=".serialize($solucion)."&contador=".$contador."'><th>
-                                 
-                            </th></a>";
+                                    <img class='oculto' src='Images/oculto.jpg'>
+                                </a>
+                            </th>";
                     }
                     $contador++;
                 }
