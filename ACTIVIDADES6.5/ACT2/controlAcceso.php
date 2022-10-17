@@ -42,11 +42,25 @@
             return ($tarjeta[$fila][$columna]==$valor);
         }
 
-        function imprimeTarjeta(){
+        function imprimeTarjeta($tarjeta,$perfil){
             /*recibe una tarjeta y la imprime en una tabla 
             para comprobar el valor de todas las coordenadas.*/
-
-
+            echo "<table border='1px solid black'>";
+            if($perfil=="usuario"){
+                echo "<tr><th colspan='6'>Usuario</th></tr>";
+            }else if($perfil="administrador"){
+                echo "<tr><th colspan='6'>Administrador</th></tr>";
+            }
+            for ($i=0; $i < sizeOf($tarjeta); $i++) { 
+                echo "<tr>";
+                for ($j=0; $j < sizeOF($tarjeta[0]); $j++) { 
+                    echo "<th>";
+                    echo $tarjeta[$i][$j];
+                    echo "</th>";
+                }
+                echo "</tr>";
+            }
+            echo "</table>";
         }
     ?>
 </body>

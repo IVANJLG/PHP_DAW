@@ -21,9 +21,13 @@
     }
 </style>
 <body>
+    <?php 
+        include("../ACT2/controlAcceso.php");
+        imprimeTarjeta(dameTarjeta("usuario"),"usuario");
+        imprimeTarjeta(dameTarjeta("administrador"),"administrador");
+    ?>
     <!--Tarjetas de usuario y admin-->
-    <div class="tarjetas">
-        <table border="1px solid black">
+        <!-- <table border="1px solid black">
             <tr>
                 <th colspan="6">Usuario</th>
             </tr>
@@ -100,7 +104,7 @@
                 echo "</tr>";
             }
         ?>
-        </table>
+        </table> -->
     </div>
     <!--Formulario-->
     <form action="Ej2-b.php" method="get">
