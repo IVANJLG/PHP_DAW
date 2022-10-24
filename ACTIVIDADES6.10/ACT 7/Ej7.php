@@ -19,11 +19,16 @@
         $AñoF =  $_GET["AñoF"];
 
         if(checkdate($MesNac,$diaNac,$AñoNac) && checkdate($MesF,$DiaF,$AñoF)){
-            $fecha = date_Create($diaNac."/".$MesNac."/".$AñoNac);
-            $fecha = date_Create($DiaF."/".$MesF."/".$AñoF);
+            $fecha1 = date_Create($MesNac."/".$diaNac."/".$AñoNac);
+            $fecha2 = date_Create($MesF."/".$DiaF."/".$AñoF);
+            /*fallo: 
+    echo "Diferencia: ".date("m-d-Y",strtotime(date_format($fecha1,"m-d-Y")."+$DiaF days $MesF month $AñoF years"));*/
+            echo "FECHA NACIMIENTO: ".date($fecha1)."<br>";
+            echo "FECHA FUTURA: ".$fecha2."<br>";
+            echo date("d-F-Y",$Diferencia)."<br>";
 
         }else{
-            echo "FECHA INCORRECTA. VUELVA A INTENTARLO.";
+            echo "FECHAS INCORRECTAS. VUELVA A INTENTARLO.";
         }
     }else{
         echo "

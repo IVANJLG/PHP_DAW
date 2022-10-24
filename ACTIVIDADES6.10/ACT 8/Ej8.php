@@ -7,29 +7,52 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- Pedir al usuario su fecha de nacimiento y una fecha futura, y mostrar
+     la edad que tendrá en esa fecha (un año tiene 60*60*24*365.25 segundos) -->
     <?php
-    /*Pedir la fecha de nacimiento y el nombre de dos personas y mostrar la edad de cada una, así
-    como el nombre de la persona mayor.*/
-    if(isset($_GET["Dia"])){
-        $dia =  $_GET["Dia"];
-        $mes =  $_GET["Mes"];
-        $año =  $_GET["Año"];
+    if(isset($_POST["fecha1"])){
+        $nombre1=$_POST['nombre1'];
+        $fecha1=$_POST['fecha1'];
+        $nombre2=$_POST['nombre2'];
+        $fecha2=$_POST['fecha2'];
+        $yearActual=date("Y");
 
-        if(checkdate($mes,$dia,$año)){
-            
+        $fechaComoEntero1 = strtotime($fecha1); //paso primera fecha, recojo el año y la edad
+        $year1 = date("Y", $fechaComoEntero1);
+        $edad1=$yearActual-$year1;
+
+        $fechaComoEntero2 = strtotime($fecha2); //igual con la segunda fecha
+        $year2 = date("Y", $fechaComoEntero2);
+        $edad2=$yearActual-$year2;
+
+        echo $nombre1, " tiene ", $edad1, " años y ", $nombre2, " tiene ", $edad2, " años.<br>";
+        if($edad1>$edad2){
+            echo $nombre1," es mayor.";
+        }else if($edad1==$edad2){
+            echo "Tienen la misma edad";
         }else{
-            echo "FECHA INCORRECTA. VUELVA A INTENTARLO.";
+            echo $nombre2," es mayor.";
         }
+       
+       
+
     }else{
-        echo "
+    echo "
         <table border='1px solid black'>
-            <form method='get' action='Ej8.php'>
+            <form method='POST' action='Ej8.php'>
                 <tr>
-                    <th><input type='number' name='Dia' min='1' max='31' placeholder='Dia' required></th>
-                    <th><input type='number' name='Mes' min='1' max='12' placeholder='Mes' required></th>
-                    <th><input type='number' name='Año' min='1' max='10000' placeholder='Año' required></th>
+                    <th>Nombre de persona</th>
+                    <th>Fecha</th>
                 </tr>
-                <tr><th colspan='4'><input type='submit'></th></tr>
+                <tr>
+                    <th><input type='text' name='nombre1' placeholder='Nombre de persona 1' required></th>
+                    <th><input type='date' name='fecha1'  required></th>
+                </tr>
+                <tr>
+                    <th><input type='text' name='nombre2' placeholder='Nombre de persona 2' required></th>
+                    <th><input type='date' name='fecha2' required></th>
+                </tr>
+                <tr><th colspan=2><input type='submit' value='Enviar'></th></tr>
             </form>
         </table>
         ";
