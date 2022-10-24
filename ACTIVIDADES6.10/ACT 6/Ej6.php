@@ -15,11 +15,7 @@
         $mes =  $_GET["Mes"];
         $año =  $_GET["Año"];
 
-        if(checkdate($mes,$dia,$año)){
-            
-        }else{
-            echo "FECHA INCORRECTA. VUELVA A INTENTARLO.";
-        }
+        
     }else{
         echo "
         <table border='1px solid black'>
