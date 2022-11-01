@@ -34,7 +34,8 @@
                 ";
         }else{echo "LA SUMA DE LOS NUMEROS INTRODUCIDOS ES: ".$_SESSION["suma"]."<br><br>No puedes seguir sumando.";}
 
-    }
+    }/* 
+    session_destroy(); */
     ?>
 </body>
 </html>
