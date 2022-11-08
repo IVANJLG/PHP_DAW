@@ -58,7 +58,7 @@
 
     /*Si ha comprado cualquier articulo comprueba que la sesion carrito existe. Si no existe, crea un array
         con los valores recogidos y si existe, añadelos al array (con la funcion array_push)*/
-    echo var_dump($_SESSION);
+    /* echo var_dump($_SESSION); */
     if (isset($_GET["articulo"])) {
         if (!isset($_SESSION["Carrito"])) {
             $_SESSION["Carrito"] = array();

@@ -1,3 +1,10 @@
+<?php session_Start(); 
+    if(isset($_POST["destruir"])){
+        session_destroy();
+        session_Start();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,32 +15,28 @@
 </head>
 <style>
     body{
-        background-color: <?php echo $_GET["ColorNuevo"];?>;
+        <?php
+            if(isset($_POST["red"])){
+                $Color = "rgb(".$_POST["red"].", ".$_POST["green"].", ".$_POST["blue"].")";
+                echo "background-color:".$Color;
+                
+                if(isset($_SESSION["colores"])){
+                    array_push($_SESSION["colores"],$Color);
+                }else{
+                    $_SESSION["colores"]=[];
+                }
+            }else{
+                echo "background-color:rgb(255,255,255);";
+            }
+        ?>
+        
+    }
+
+    input{
+        margin:20px;
     }
 </style>
 <body>
-    <?php
-        if(isset($_GET["ColorNuevo"])){
-            if(!isset($_SESSION["Colores"])){
-                $_SESSION["Colores"] = [];
-            }
-            array_push($_SESSION["Colores"],$_GET["ColorNuevo"]);
-            setcookie("Colores",serialize($_SESSION["Colores"]),time() + 365*24*2600);
-            echo var_dump($_COOKIE);
-        }
-    ?>
-    <h1>Añadir color: </h1>
-    <form method="GET" action="Ej1.php">
-        <!--Enviamos un string en forma de rgb para luego guardarlo en el array colores-->
-        <input type="hidden" name="ColorNuevo" value="rgb(<?php echo mt_rand(0,255).",".mt_rand(0,255).",".mt_rand(0,255);?>)">
-        <input type="submit" value="Añadir color">
-    </form>
-
-    <form method="GET" action="MostrarPaleta.php">
-        <!--ENVIAR ARRAY COLORES POR FORMULARIO-->
-        <input type="submit" value="Mostrar paleta creada">
-    </form>
-
     <?php
     /* Crear una página principal con un botón 'Añadir color' para generar un color aleatorio que además se
     establecerá como color de fondo de la página, cada vez que se pulsa irá generando un color nuevo (actualizando
@@ -44,7 +47,16 @@
     otro para destruir la sesión y generar una paleta nueva. Además al pulsar en cada celda de la tabla el color de
     fondo de la página cambiará al color de la celda pulsada. */
 
-
     ?>
+
+    <form action="Ej1.php" method="post">
+        <input type="hidden" name="red" value="<?php echo rand(0,255);?>">
+        <input type="hidden" name="green" value="<?php echo rand(0,255);?>">
+        <input type="hidden" name="blue" value="<?php echo rand(0,255);?>">
+        <input type="submit" value="Añadir color">
+    </form>
+    <form action="Ej1Paleta.php" method="post">
+    <input type="submit" value="Ver paleta">
+    </form>
 </body>
 </html>
