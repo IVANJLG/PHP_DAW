@@ -22,13 +22,37 @@
 <body>
     <?php
         session_Start();
+        
         if(isset($_POST["SessionDestroy"])){
+            $Hoy = date("d-F-Y",time());
             if(isset($_SESSION["Mascotas"])){
                 $Mascotas = fopen("Mascotas.txt","a+");
-                fwrite($Mascotas,"#".date("d-F-Y",time())."#\n");
-                for ($i=0; $i < count($_SESSION["Mascotas"]); $i++) {
-                    fwrite($Mascotas,$_SESSION["Mascotas"][$i]["Nombre"]."-".$_SESSION["Mascotas"][$i]["Tipo"]."-".$_SESSION["Mascotas"][$i]["Edad"]."\n");                    
+                /*Con un bucle leo el valor de la ultima linea escrita. Si la 
+                ultima fecha escrita es la de hoy, no la escribas*/
+                while(!feof($Mascotas)){
+                    /*si la linea empieza con # significa que es una fecha, por tanto, guarda su valor
+                    en la variable UltimaFecha. Ira machacando el valor de la variable hasta llegar
+                    a la ultima fecha*/
+                    $Line = fgets($Mascotas);
+                    if(!isset($ultimaLinea)){
+                        $ultimaLinea = "";
+                    }
+                    if(str_starts_with($Line,"#")){
+                        $ultimaLinea = $Line;
+                        
+                    }
                 }
+                var_dump($ultimaLinea);
+                var_dump("#".date("d-F-Y",time())."#".PHP_EOL);
+
+                if($ultimaLinea != "#".date("d-F-Y",time())."#".PHP_EOL){
+                    fwrite($Mascotas,"#".date("d-F-Y",time())."#".PHP_EOL);
+                }
+                //una vez ya escrita la fecha, con un bucle introduce a las mascotas
+                for ($i=0; $i < count($_SESSION["Mascotas"]); $i++) {
+                    fwrite($Mascotas,$_SESSION["Mascotas"][$i]["Nombre"]."-".$_SESSION["Mascotas"][$i]["Tipo"]."-".$_SESSION["Mascotas"][$i]["Edad"].PHP_EOL);                    
+                }
+                //cierra el fichero, luego la sesion y luego iniciala de nuevo
                 fclose($Mascotas);
                 session_Destroy();
                 session_Start();
