@@ -1,11 +1,11 @@
 <?php
-session_start();
-if (!isset($_SESSION['paginas'])) {
-    $_SESSION['paginas'] = 5;
-}
-if (isset($_POST['paginas'])) {
-    $_SESSION['paginas'] = $_POST['paginas'];
-}
+    session_start();
+    if (!isset($_SESSION['paginas'])) {
+        $_SESSION['paginas'] = 5;
+    }
+    if (isset($_POST['paginas'])) {
+        $_SESSION['paginas'] = $_POST['paginas'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +60,8 @@ if (isset($_POST['paginas'])) {
             document.getElementById("DNIBorrar").submit(); //-> Reanudamos el evento del submit.
         }
     }
-</script> -->
+    </script> 
+-->
 <body>
     <?php 
         //inicio la conexion en un try-catch
@@ -95,8 +96,9 @@ if (isset($_POST['paginas'])) {
         }
 
         //Elimino el registro selecionado
-        if(isset($_POST["Eliminar"])){
-            $Eliminar = "DELETE from clientes WHERE DNI='".$_POST["DNIBorrar"]."'";
+        if(isset($_GET["si"])){
+            echo "HAS ESCOGIDO ELIMINAR EL REGISTRO";
+            $Eliminar = "DELETE from clientes WHERE DNI='".$_GET["DNIBorrar"]."'";
             $conexion->exec($Eliminar);
             header("location:Ej1.php");
         }
@@ -148,7 +150,6 @@ if (isset($_POST['paginas'])) {
                     </th>
                     <th>
                         <form method='post' action='Ej1ConfirmarDelete.php' id='DNIBorrar'>
-                            <input type='hidden' name='Eliminar'>
                             <input type='hidden' name='DNIBorrar' value='".$cliente->DNI."'>
                             <input type='submit' value='Eliminar'>
                         </form>
