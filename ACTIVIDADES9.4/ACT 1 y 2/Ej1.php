@@ -1,3 +1,13 @@
+<?php
+session_start();
+if (!isset($_SESSION['paginas'])) {
+    $_SESSION['paginas'] = 5;
+}
+if (isset($_POST['paginas'])) {
+    $_SESSION['paginas'] = $_POST['paginas'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +29,38 @@
     th{
         font-weight:normal;
     }
+
+    .paginas td{
+        padding:8px;
+        padding-right:5px;
+        text-align:center;
+        background-color:rgba(150,150,150);
+        color:white;
+    }
+
+    .paginas a{
+        text-decoration:none;
+        color:white;
+    }
+
+    form{
+        width:fit-content;
+        margin: 0 auto;
+    }
 </style>
+<!-- 
+    SI CON UN ONCLICK EN EL SUBMIT DE ELIMINAR REGISTRO LLAMAS A ESTA FUNCION, LA CONFIRMACION TE LA 
+    PIDE VIA JAVASCRIPT CON UNA ALERTA
+    <script>
+    function Confirmacion(){
+        event.preventDefault(); //-> Cancelamos el evento del submit.
+        let confirmacion = prompt("¿Esta seguro de que desea continuar? si/no: ");
+        console.log(confirmacion=="si");
+        if(confirmacion=="si"){
+            document.getElementById("DNIBorrar").submit(); //-> Reanudamos el evento del submit.
+        }
+    }
+</script> -->
 <body>
     <?php 
         //inicio la conexion en un try-catch
@@ -62,6 +103,19 @@
 
         //almaceno la consulta de conexion en la variable consulta para mostrar la tabla
         $consulta = $conexion -> query("SELECT * FROM clientes;");
+        $tamano_pagina = $_SESSION['paginas'];
+        $num_total_registros = $consulta->rowCount();
+        $total_paginas = ceil($num_total_registros / $tamano_pagina);
+
+        if (isset($_GET["pagina"])) {
+            $pagina = $_GET["pagina"];
+            $inicio = ($pagina - 1) * $tamano_pagina;
+        } else {
+            $pagina = 1;
+            $inicio = 0;
+        }
+
+        $consulta2 = $conexion->query("select * from clientes limit " . $inicio . "," . $tamano_pagina);
     ?>
     <!--Muestro la tabla-->
     <table>
@@ -75,7 +129,7 @@
             <th></th>
         </tr>
         <?php
-            while($cliente = $consulta-> fetchObject()){
+            while($cliente = $consulta2-> fetchObject()){
                 echo "
                 <tr>
                     <th>".$cliente->DNI."</th>
@@ -93,7 +147,7 @@
                         </form>
                     </th>
                     <th>
-                        <form method='post' action='Ej1.php'>
+                        <form method='post' action='Ej1ConfirmarDelete.php' id='DNIBorrar'>
                             <input type='hidden' name='Eliminar'>
                             <input type='hidden' name='DNIBorrar' value='".$cliente->DNI."'>
                             <input type='submit' value='Eliminar'>
@@ -102,6 +156,7 @@
                 </tr>";
             }
         ?>
+        <!--FORMULARIO AÑADIR REGISTRO-->
         <tr>
             <form action="Ej1.php" method="post">
                 <th><input type="text" name="DNI" minlenght=9 maxlenght=9 required></th>
@@ -112,7 +167,37 @@
             </form>
         </tr>
     </table>
-    
+
+    <!--TABLA DE PASAR PAGINAS Y NUMERO DE PAGINAS-->
+    <table class="paginas">
+        <tr>
+            <td><a href='Ej1.php?pagina=1'>inicio</a></td>
+            <?php
+            if ($total_paginas > 1) {
+                for ($i = 1; $i <= $total_paginas; $i++) {
+                    echo ("<td>");
+                    if ($pagina == $i) {
+                        //muestro el índice de la página actual, no coloco enlace 
+                        echo $pagina;
+                    } else {
+                        //si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa página 
+                        echo "<a href='Ej1.php?pagina=$i'>$i</a>";
+                    }
+                    echo ("</td>");
+                }
+            }
+            ?>
+            <td><a href='Ej1.php?pagina=<?= $total_paginas ?>'>final</a></td>
+            <?php
+
+            ?>
+
+        </tr>
+    </table>
+    <form class="numPaginas" action="" method="post">
+        Registros/página: <input type="number" name="paginas" size="3" value="<?= $tamano_pagina ?>">
+        <!-- <input type="submit" value="Actualizar"> -->
+    </form>
     <?php 
     //cierro la conexion al final
     $conexion = null;
