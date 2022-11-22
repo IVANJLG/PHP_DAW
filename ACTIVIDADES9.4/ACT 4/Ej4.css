@@ -1,0 +1,73 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+table{
+    font-family: sans-serif;
+    display:block;
+    margin: 8px auto;
+    width:fit-content;
+    font-size:1.3em;
+}
+th{
+    padding: 5px 10px 5px 10px;
+    font-weight:lighter;
+}
+tr:first-child{
+    font-size:1.7em;
+}
+tr:nth-child(2){
+    font-size:1.4em;
+}
+tr:nth-child(even){
+    background-color:rgba(190,190,190,.3);
+}
+
+input[type=submit]{
+    width:80px;
+    height:2rem;
+    color:white;
+    border-radius:8px;
+    border:0;
+}
+
+input[value=Eliminar]{
+    background-color:rgb(145, 56, 56);
+}
+input[value=Modificar]{
+    background-color:rgb(204, 173, 73);
+}
+input[value=Entrada]{
+    background-color:rgb(32, 32, 131);
+}
+input[value=Salida]{
+    background-color:rgb(32, 32, 131);
+}
+.paginas td{
+    width:100px;
+    text-align:Center;
+    font-size:.8em;
+}
+a{
+    text-decoration:none;
+    font-size:.97em;
+    padding: 5px 100px 5px 100px;
+    color:black;
+}
+
+.paginas tr{
+    background-color:rgba(190,190,190,.3);
+}
+
+input[type=text],input[type=number]{
+    width:200px;
+    height:2rem;
+}
+
+input[value="Añadir articulo"]{
+    background-color:rgb(13, 100, 13);
+    width:130px;
+    height:2.2rem;
+}
