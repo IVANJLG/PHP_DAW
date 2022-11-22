@@ -28,7 +28,6 @@
         $tamano_pagina = $_SESSION['paginas'];
         $num_total_registros = $consulta1->rowCount();
         $total_paginas = ceil($num_total_registros / $tamano_pagina);
-
         if (isset($_GET["pagina"])) {
             $pagina = $_GET["pagina"];
             $inicio = ($pagina - 1) * $tamano_pagina;
@@ -38,9 +37,34 @@
         }
         //consulta Paginada
         $consultaPaginada = $conexion->query("SELECT * FROM productos limit  ". $inicio . "," . $tamano_pagina);
+    
+        /*TRATAMIENTO BOTONES REGISTRO (MODIFICAR ELIMINAR INSERTAR...)*/
+
+        //insertar registro (recogemos valores del formulario y hacemos un insert)
+        if(isset($_POST["Codigo"])){
+            //compruebo que este codigo no es de un producto ya existente
+            $coincidencia = $conexion->query("SELECT * FROM productos WHERE Codigo='".$_POST["Codigo"]."'");
+            if($coincidencia->rowCount()>=0){
+                echo "
+                    <script>alert('Este codigo ya se encuentra registrado. Porfavor, pruebe de nuevo.');</script>
+                ";
+            }else{
+                $insertar = "INSERT into productos values(
+                    ".$_POST["Codigo"].",
+                    ".$_POST["Descripcion"].",
+                    ".$_POST["PVenta"].",
+                    ".$_POST["PCompra"].",
+                    ".$_POST["Stock"]."
+                )";
+    
+                $conexion->exec($insertar);
+                header("location: Ej4.php");
+            }
+        }
     ?>
 </head>
 <body>
+    <!--productos consulta paginada-->
     <table>
         <tr>
             <th colspan="10">GESTISIMAL</th>
@@ -54,7 +78,7 @@
             <th>Stock</th>
             <th colspan=4></th>
         </tr>
-        <!--A partir de aqui pintamos los valores de la tabla productos con un bucle-->
+        
         <?php
             while($cliente = $consultaPaginada -> fetchObject()){
                 //aqui pintamos cada registro
@@ -93,7 +117,8 @@
         </tr>        
         <?php } ?>
     </table>
-    <!--En esta tabla de una fila están las opciones de pasar paginas-->
+
+    <!--opciones para pasar paginas-->
     <table class="paginas">
         <tr>
             <td><a href='Ej4.php?pagina=1'>inicio</a></td>
@@ -114,7 +139,10 @@
             ?>
             <td><a href='Ej4.php?pagina=<?= $total_paginas ?>'>final</a></td>
         </tr>
+    
     </table>
+
+    <!--formulario insercion de articulos-->
     <table>
         <tr>
             <th>Codigo</th>
@@ -135,5 +163,11 @@
             </form>
         </tr>
     </table>
+
+
+    <?php 
+    //cierro la conexion al final
+    $conexion = null;
+    ?>
 </body>
 </html>
