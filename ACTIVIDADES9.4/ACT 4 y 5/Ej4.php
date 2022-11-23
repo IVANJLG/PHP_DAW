@@ -276,7 +276,7 @@
             </tr>
         <?php } ?>
             <tr>
-                <th colspan=5>
+                <th colspan=6>
                     <form action="Ej4.php" method="post">
                         <input type="hidden" name="Destruir">
                         <input type="submit" value="Vaciar carrito">
