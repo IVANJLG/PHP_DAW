@@ -62,12 +62,16 @@ a{
 }
 
 input[type=text],input[type=number]{
-    width:200px;
-    height:2rem;
+    width:fit-content;
+    height:2em;
 }
 
 input[value="Añadir articulo"]{
     background-color:rgb(13, 100, 13);
     width:130px;
     height:2.2rem;
+}
+input[value="Vaciar el carrito"]{
+    width:fit-content;
+    background-color:rgb(126, 23, 23);
 }
