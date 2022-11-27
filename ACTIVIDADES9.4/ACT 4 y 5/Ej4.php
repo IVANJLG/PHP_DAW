@@ -117,12 +117,14 @@
         if(isset($_POST["CodigoCarrito"])){
             $productoCarrito = $conexion->query("SELECT * FROM productos where Codigo = '".$_POST["CodigoCarrito"]."'");
             $Pcarrito = $productoCarrito->fetchObject();
-            $PCarro = ["Codigo"=>$Pcarrito->Codigo,
-            "Descripcion"=>$Pcarrito->Descripcion,
-            "PCompra"=>$Pcarrito->PrecioCompra,
-            "PVenta"=>$Pcarrito->PrecioVenta,
-            "Stock"=>$Pcarrito->Stock,
-            "Unidades"=>1
+            $PCarro = 
+            [
+                "Codigo"=>$Pcarrito->Codigo,
+                "Descripcion"=>$Pcarrito->Descripcion,
+                "PCompra"=>$Pcarrito->PrecioCompra,
+                "PVenta"=>$Pcarrito->PrecioVenta,
+                "Stock"=>$Pcarrito->Stock,
+                "Unidades"=>1
             ];
             if(in_array($_SESSION["Carrito"],$PCarro)){
                 $_SESSION["Carrito"][$PCarro]["Unidades"]++;
