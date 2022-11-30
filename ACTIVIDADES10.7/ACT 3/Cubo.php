@@ -29,7 +29,7 @@
                     $this->contenido = $this->capacidad;
                     echo "El cubo se ha llenado.";
                 }else{
-                    $this->contenido += $this->contenido+$litros;
+                    $this->contenido += $litros;
                 }
             }
         }
@@ -39,6 +39,7 @@
                 echo "No puedes verter de un cubo mas litros de los que hay.";
             }else{
                 $cubo->llenarCubo($litros);
+                $this->contenido -= $litros;
             }
         }
     }

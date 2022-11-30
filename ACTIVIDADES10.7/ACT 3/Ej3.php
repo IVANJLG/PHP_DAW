@@ -18,12 +18,31 @@
 
     <?php
         include_once "Cubo.php";
+
         $cubo1 = new cubo(150,50);
         $cubo2 = new cubo(300,200);
 
         echo "cubo 1: <br>".$cubo1."<br><br>";
         echo "cubo 2: <br>".$cubo2."<br><br>";
-        echo "";
+        //caso 1
+        echo "CASO 1: vertiendo 50 litros de cubo 2 a cubo 1... <br>";
+        $cubo2->verterContenido($cubo1,50);
+        
+        echo "cubo 1: <br>".$cubo1."<br><br>";
+        echo "cubo 2: <br>".$cubo2."<br><br>";
+        // caso 2
+        echo "CASO 2: vertiendo 101 litros de cubo 1 a cubo 2... <br>";
+        $cubo1->verterContenido($cubo2,101);
+        
+        echo "<br>cubo 1: <br>".$cubo1."<br><br>";
+        echo "cubo 2: <br>".$cubo2."<br><br>";
+
+         //caso 3
+        echo "CASO 3: vertiendo 51 litros de cubo 2 a cubo 1... <br>";
+        $cubo2->verterContenido($cubo1,51);
+        
+        echo "<br>cubo 1: <br>".$cubo1."<br><br>";
+        echo "cubo 2: <br>".$cubo2."<br><br>";
     ?>
 </body>
 </html>
