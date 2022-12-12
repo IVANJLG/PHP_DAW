@@ -11,16 +11,15 @@
 </head>
 <body>
     <table>
-        <form action="../Controller/ProcesaProductos.php" method="post"></form>
         <tr>
-            <th colspan="6">Listado de productos</th>
+            <th colspan="7">Listado de productos</th>
         </tr>
         <tr>
             <th>Codigo</th>
             <th>Nombre</th>
             <th>Precio</th>
             <th>Stock</th>
-            <th colspan="2"></th>
+            <th colspan="3"></th>
         </tr>
     <?php foreach($data["productos"] as $producto){
     //aqui mostramos en formato los productos ?>
@@ -29,8 +28,20 @@
             <td><?php echo $producto->getNombre();?></td>
             <td><?php echo $producto->getPrecio();?></td>
             <td><?php echo $producto->getStock();?></td>
-            <td><input type="button" value="Añadir al carrito"></td>
-            <td><input type="button" value="Reponer"></td>
+            <form action="../Controller/ProcesaProductos.php" method="post">
+                <input type="hidden" name="AddCarrito">
+                <td><input type="submit" value="Añadir al carrito"></td>
+            </form>
+            <!--SUMAR AL STOCK-->
+            <form action="../Controller/ProcesaProductos.php" method="post">
+                <input type="hidden" name="Reponer">
+                <td><input type="submit" value="Reponer"></td>
+            </form>
+            <form action="../Controller/ProcesaProductos.php" method="post">
+                <input type="hidden" name="Borrar">
+                <td><input type="submit" value="BorrarProducto"></td>
+            </form>
+            
         </tr>
     <?php }?>
     </table>
