@@ -14,5 +14,7 @@
         public function getKilometraje(){
             return vehiculo::getKilometraje();
         }
+
+        
     }
 ?>

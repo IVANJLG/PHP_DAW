@@ -13,13 +13,13 @@
         y getKmTotales(); así como el método de instancia getKmRecorridos(). Crea también 
         algún método específico para cada una de las subclases. Prueba las clases creadas 
         mediante una aplicación que realice, al menos, las siguientes acciones:
-        • Anda con la bicicleta
+        
         • Haz el caballito con la bicicleta
-        • Anda con el coche
+
         • Quema rueda con el coche
-        • Ver kilometraje de la bicicleta
-        • Ver kilometraje del coche
-        • Ver kilometraje total
+        
+        
+        
     -->
 
     <?php
@@ -30,15 +30,23 @@
         $bici1 = new bicicleta();
         $coche1 = new coche();
 
-        echo "La bici ha avanzado ".$bici1->getKilometraje()." kilometros<br><br>";
+        echo "La bici ha avanzado ".$bici1->getKilometraje()." kilometros<br>";
         echo "El coche ha avanzado ".$coche1->getKilometraje()." kilometros";
 
         echo "<br><br>Se han creado ".vehiculo::getVehiculosCreados()." vehiculos";
         echo "<br><br>Se han avanzado en total ".vehiculo::getKmTotales()." kilometros.<br><br>";
 
         $coche1->andaCoche(17);
-        echo "La bici ha avanzado ".$bici1->getKilometraje()." kilometros<br><br>";
-        echo "El coche ha avanzado ".$coche1->getKilometraje()." kilometros";
+        echo "<br>";
+        $bici1->andaBici(7);
+        echo "<br>";
+        $coche1->andaCoche(10);
+        echo "<br>";
+        $bici1->andaBici(32);
+        echo "<br>";
+        echo "<br><br>El coche 1 ha avanzado ".$coche1->getKilometraje()." kilometros en total<br><br>";
+        echo "La bici 1 ha avanzado ".$bici1->getKilometraje()." kilometros en total";
+        
         echo "<br><br>Se han avanzado en total ".vehiculo::getKmTotales()." kilometros.<br><br>";
     ?>
 </body>
