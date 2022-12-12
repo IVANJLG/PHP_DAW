@@ -1,0 +1,33 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family:sans-serif;
+}
+body{
+    background-color: rgb(224, 215, 215);
+}
+table{
+    display:block;
+    width:fit-content;
+    margin: 15px auto;
+}
+
+th,td{
+    padding: 10px 30px;
+    text-align: center;
+}
+tr{
+    background-color:rgb(243, 243, 243);
+}
+tr:nth-child(even){
+    background-color:rgb(201, 201, 201);
+}
+
+input{
+    color:white;
+    background-color:rgb(91, 91, 231);
+    border:none;
+    padding:8px;
+    border-radius:15px;
+}
