@@ -29,6 +29,7 @@
             <td><?php echo $producto->getPrecio();?></td>
             <td><?php echo $producto->getStock();?></td>
             <form action="../Controller/ProcesaProductos.php" method="post">
+                <input type="hidden" name="codigo" value="<?php echo $producto->getCodigo();?>">
                 <input type="hidden" name="AddCarrito">
                 <td><input type="submit" value="Añadir al carrito"></td>
             </form>
@@ -41,7 +42,6 @@
                 <input type="hidden" name="Borrar">
                 <td><input type="submit" value="BorrarProducto"></td>
             </form>
-            
         </tr>
     <?php }?>
     </table>
