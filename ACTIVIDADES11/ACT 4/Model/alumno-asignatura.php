@@ -78,7 +78,7 @@ class AlumnoAsignatura {
 
   public function setCasignatura($asignatura)
   {
-    $this->casignatura = $casignatura;
+    $this->casignatura = $asignatura;
 
     return $this;
   }

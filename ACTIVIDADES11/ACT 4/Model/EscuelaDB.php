@@ -3,8 +3,8 @@
 abstract class EscuelaDB {
   private static $server = 'localhost';
   private static $db = 'escuela';
-  private static $user = 'root';
-  private static $password = '';
+  private static $user = 'usuario';
+  private static $password = 'usuario';
 
   public static function connectDB() {
     try {
